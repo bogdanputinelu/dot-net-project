@@ -5,7 +5,7 @@ namespace Project.Repositories.GenericRepository
     public interface IGenericRepository<TEntity> where TEntity : BaseEntity
     {
         // Get all data
-        Task<List<TEntity>> GetAll();
+        Task<List<TEntity>> GetAllAsync();
         IQueryable<TEntity> GetAllAsQueryable();
 
         // Create

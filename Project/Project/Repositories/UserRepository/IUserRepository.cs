@@ -7,5 +7,7 @@ namespace Project.Repositories.UserRepository
     {
         List<User> GetAllWithInclude();
         List<User> GetAllWithJoin();
+
+        User FindByUsername(string username);
     }
 }

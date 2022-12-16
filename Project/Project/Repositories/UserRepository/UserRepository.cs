@@ -27,5 +27,9 @@ namespace Project.Repositories.UserRepository
 
             return result.ToList();
         }
+        public User FindByUsername(string username)
+        {
+            return _table.FirstOrDefault(x => x.UserName == username);
+        }
     }
 }

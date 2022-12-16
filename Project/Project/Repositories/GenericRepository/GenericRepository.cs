@@ -18,7 +18,7 @@ namespace Project.Repositories.GenericRepository
         }
         
         // Get all
-        public async Task<List<TEntity>> GetAll()
+        public async Task<List<TEntity>> GetAllAsync()
         {
             return await _table.AsNoTracking().ToListAsync();
         }
