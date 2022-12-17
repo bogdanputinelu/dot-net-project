@@ -1,5 +1,9 @@
 ﻿using Project.Helpers.JwtUtils;
+using Project.Repositories.ApartmentRepository;
+using Project.Repositories.LocationRepository;
 using Project.Repositories.UserRepository;
+using Project.Services.ApartmentServices;
+using Project.Services.LocationServices;
 using Project.Services.UserServices;
 
 namespace Project.Helpers.Extensions
@@ -9,6 +13,8 @@ namespace Project.Helpers.Extensions
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IApartmentRepository, ApartmentRepository>();
+            services.AddTransient<ILocationRepository, LocationRepository>();
 
             return services;
         }
@@ -16,6 +22,8 @@ namespace Project.Helpers.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IApartmentService, ApartmentService>();
+            services.AddTransient<ILocationService, LocationService>();
 
             return services;
         }

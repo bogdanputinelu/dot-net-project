@@ -67,9 +67,9 @@ namespace Project.Controllers
         }
         [Authorization(Role.Admin)]
         [HttpGet("admin")]
-        public IActionResult GetAllAdmin()
+        public async Task<IActionResult> GetAllAdmin()
         {
-            var users = _userService.GetAllUsers();
+            var users = await _userService.GetAllUsers();
             return Ok(users);
         }
         [Authorization(Role.User)]
