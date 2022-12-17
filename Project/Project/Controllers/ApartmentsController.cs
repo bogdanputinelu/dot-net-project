@@ -6,6 +6,7 @@ using Project.Models;
 using Project.Services.ApartmentServices;
 using Project.Services.UserServices;
 using Microsoft.AspNetCore.Authorization;
+using Project.Helpers.Attributes;
 
 namespace Project.Controllers
 {
@@ -25,6 +26,7 @@ namespace Project.Controllers
             var apartments = await _apartmentService.GetAllApartments();
             return Ok(apartments);
         }
+        [Authorization(Role.Admin)]
         [HttpPost("create")]
         public async Task<IActionResult> Create(ApartmentRequestDTO apartment)
         {
@@ -42,6 +44,7 @@ namespace Project.Controllers
             await _apartmentService.Create(apartmentToCreate);
             return Ok();
         }
+        [Authorization(Role.Admin)]
         [HttpPut("edit/{id}")]
         public IActionResult EditApartment(Guid id, [FromBody] ApartmentRequestDTO apartment)
         {
@@ -63,6 +66,7 @@ namespace Project.Controllers
             }
             return Ok();
         }
+        [Authorization(Role.Admin)]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteApartment(Guid id)
         {

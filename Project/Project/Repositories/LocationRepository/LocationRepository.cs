@@ -11,8 +11,8 @@ namespace Project.Repositories.LocationRepository
         }
         public void GroupByCountry()
         {
-            var groupedCities = from ap in _table
-                                    group ap by ap.Country;
+            var groupedCities = from l in _table
+                                group l by l.Country;
 
             foreach (var group in groupedCities)
             {
@@ -21,6 +21,18 @@ namespace Project.Repositories.LocationRepository
                 {
                     Console.WriteLine("City: " + l.City);
                 }
+            }
+        }
+        public void ShowLocationsInCountry(string country)
+        {
+            var locations = from l in _table
+                            where l.Country == country
+                            select l;
+
+            foreach (Location l in locations)
+            {
+                Console.WriteLine("City: " + l.City);
+                
             }
         }
     }

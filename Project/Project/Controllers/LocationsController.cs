@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Project.Models.DTOs;
 using Project.Models;
 using Project.Services.LocationServices;
+using Project.Helpers.Attributes;
+using Project.Models.Enums;
 
 namespace Project.Controllers
 {
@@ -21,6 +23,7 @@ namespace Project.Controllers
             var locations = await _locationService.GetAllLocations();
             return Ok(locations);
         }
+        [Authorization(Role.Admin)]
         [HttpPost("create")]
         public async Task<IActionResult> Create(LocationRequestDTO location)
         {
@@ -33,6 +36,7 @@ namespace Project.Controllers
             await _locationService.Create(locationToCreate);
             return Ok();
         }
+        [Authorization(Role.Admin)]
         [HttpPut("edit/{id}")]
         public IActionResult EditLocation(Guid id, [FromBody] LocationRequestDTO location)
         {
@@ -49,6 +53,7 @@ namespace Project.Controllers
             }
             return Ok();
         }
+        [Authorization(Role.Admin)]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteLocation(Guid id)
         {

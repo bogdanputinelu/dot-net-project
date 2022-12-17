@@ -11,6 +11,7 @@ namespace Project.Models.DTOs
         public int NumberOfBathrooms { get; set; }
         public int NumberOfRooms { get; set; }
         public int SquareMeters { get; set; }
+        [Required]
         public Guid LocationId { get; set; }
     }
 }
