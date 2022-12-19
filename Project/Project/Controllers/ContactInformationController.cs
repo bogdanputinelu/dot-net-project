@@ -39,7 +39,8 @@ namespace Project.Controllers
             await _contactInformationService.Create(contactInformationToCreate);
             return Ok();
         }
-        [HttpPut("edit/{id}"), Authorize]
+        [Authorization(Role.Admin, Role.User)]
+        [HttpPut("edit/{id}")]
         public IActionResult EditContactInformation(Guid id, [FromBody] ContactInformationDTO contactInformation)
         {
             var contactInformationFound = _contactInformationService.GetById(id);
@@ -56,7 +57,8 @@ namespace Project.Controllers
             }
             return Ok();
         }
-        [HttpDelete("delete/{id}"), Authorize]
+        [Authorization(Role.Admin, Role.User)]
+        [HttpDelete("delete/{id}")]
         public IActionResult DeleteContactInformation(Guid id)
         {
             var contactInformationFound = _contactInformationService.GetById(id);

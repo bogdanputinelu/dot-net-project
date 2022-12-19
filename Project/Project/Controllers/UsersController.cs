@@ -78,8 +78,8 @@ namespace Project.Controllers
         {
             return Ok("User");
         }
-
-        [HttpPut("edit/{id}"), Authorize]
+        [Authorization(Role.Admin, Role.User)]
+        [HttpPut("edit/{id}")]
         public IActionResult EditUser(Guid id, [FromBody] UserRequestDTO user)
         {
             var userFound = _userService.GetById(id);
@@ -97,7 +97,8 @@ namespace Project.Controllers
             }
             return Ok();
         }
-        [HttpDelete("delete/{id}"), Authorize]
+        [Authorization(Role.Admin, Role.User)]
+        [HttpDelete("delete/{id}")]
         public IActionResult DeleteUser(Guid id)
         {
             var userFound = _userService.GetById(id);
