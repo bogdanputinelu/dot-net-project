@@ -12,8 +12,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\core\services\apartment\" />
-    <Folder Include="src\app\pages\" />
-    <Folder Include="src\app\shared\components\" />
     <Folder Include="src\environments\" />
   </ItemGroup>
 </Project>
