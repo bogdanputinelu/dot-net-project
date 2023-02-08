@@ -6,9 +6,15 @@ import { ApartmentContentComponent } from './pages/apartment-content/apartment-c
 import { ContentComponent } from './pages/content/content.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
+  {
+    path: "",
+    canActivate: [AuthGuard],
+    component: MainComponent
+  },
   {
     path: "main",
     canActivate: [AuthGuard],
@@ -32,6 +38,10 @@ const routes: Routes = [
     path: "admin",
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/admin/admin.module').then(m => AdminModule)
+  },
+  {
+    path: "register",
+    component: RegisterComponent
   }
 ];
 

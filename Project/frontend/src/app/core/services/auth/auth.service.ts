@@ -19,7 +19,7 @@ export class AuthService {
       "firstName": "string",
       "lastName": "string"
     }
-    console.log(logBody);
+    
     return this.apiService.post<any>(`${this.route}authenticate`, logBody).pipe(
       tap((response: any) => {
         

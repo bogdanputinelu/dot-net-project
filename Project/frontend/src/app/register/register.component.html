@@ -2,8 +2,28 @@
   <p>Register</p>
   <form [formGroup]="registerForm">
     <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput formControlName="age">
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email">
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="userName">
     </mat-form-field>
     <br />
     <mat-form-field appearance="fill">
@@ -13,6 +33,7 @@
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
+    <br />
   </form>
-  <button mat-raised-button (click)="checkForm()">Submit</button>
+  <button mat-raised-button (click)="sendForm()">Submit</button>
 </mat-card>
