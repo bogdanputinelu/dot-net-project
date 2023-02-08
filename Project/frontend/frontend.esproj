@@ -11,7 +11,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\frontend</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\core\" />
+    <Folder Include="src\app\core\services\apartment\" />
     <Folder Include="src\app\pages\" />
     <Folder Include="src\app\shared\components\" />
     <Folder Include="src\environments\" />

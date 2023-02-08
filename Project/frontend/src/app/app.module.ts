@@ -5,15 +5,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ApartmentsComponent } from './pages/apartments/apartments.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ContentComponent } from './pages/content/content.component';
+import { MainComponent } from './pages/main/main.component';
+import { InfoComponent } from './shared/components/info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ApartmentsComponent
+    ContentComponent,
+    MainComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
