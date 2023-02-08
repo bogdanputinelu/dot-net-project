@@ -12,16 +12,20 @@ export class ApartmentService {
 
   constructor(private readonly apiService: ApiService) { }
 
-  getApartmentWithQueryParams(Id = {}) {
+  getApartmentWithQueryParams(Id = "") {
     return this.apiService.get(this.route + 'apartments/' + Id);
   }
 
-  getApartmentWithQueryParamsFilter(Id = {}) {
+  getApartmentWithQueryParamsFilter(Id = "") {
     return this.apiService.get(this.route + 'apartments/' + Id).pipe(map(x => {
       console.log("data from api inside service", x);
       this.responseSource.next(x);
       return x;
     }));
+  }
+
+  getAllApartments() {
+    return this.apiService.get(this.route + 'apartments');
   }
 
 }
