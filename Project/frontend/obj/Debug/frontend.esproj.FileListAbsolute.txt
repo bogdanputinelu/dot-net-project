@@ -1,0 +1,2 @@
+C:\Users\bogda\Desktop\facultate\an 2 sem 1\DAW project\Project\frontend\obj\Debug\frontend.esproj.SuggestedBindingRedirects.cache
+C:\Users\bogda\Desktop\facultate\an 2 sem 1\DAW project\Project\frontend\obj\Debug\frontend.esproj.CoreCompileInputs.cache

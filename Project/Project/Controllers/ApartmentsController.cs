@@ -26,6 +26,12 @@ namespace Project.Controllers
             var apartments = await _apartmentService.GetAllApartments();
             return Ok(apartments);
         }
+        [HttpGet("apartments/{id}")]
+        public async Task<IActionResult> GetApartmentById(Guid id)
+        {
+            var apartment = await _apartmentService.GetByIdAsync(id);
+            return Ok(apartment);
+        }
         [Authorization(Role.Admin)]
         [HttpPost("create")]
         public async Task<IActionResult> Create(ApartmentRequestDTO apartment)

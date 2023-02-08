@@ -28,6 +28,11 @@ namespace Project.Services.ApartmentServices
             return await _apartmentRepository.GetAllAsync();
         }
 
+        public async Task<Apartment> GetByIdAsync(Guid id)
+        {
+            return await _apartmentRepository.FindByIdAsync(id);
+        }
+
         public Apartment GetById(Guid id)
         {
             return _apartmentRepository.FindById(id);
