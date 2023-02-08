@@ -31,5 +31,9 @@ namespace Project.Repositories.UserRepository
         {
             return _table.FirstOrDefault(x => x.UserName == username);
         }
+        public User FindByEmail(string email)
+        {
+            return _table.FirstOrDefault(x => x.Email == email);
+        }
     }
 }

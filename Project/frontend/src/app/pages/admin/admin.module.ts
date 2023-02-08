@@ -10,6 +10,8 @@ import { AdminComponent } from './admin.component';
 //Modules
 import { AdminRoutingModule } from './admin-routing.module';
 import { MatCardModule } from '@angular/material/card';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,11 @@ import { MatCardModule } from '@angular/material/card';
     CommonModule,
     AdminRoutingModule,
     MatCardModule
-  ]
+  ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }]
 })
 export class AdminModule { }

@@ -63,7 +63,7 @@ namespace Project.Controllers
             {
                 return BadRequest("Username or password is invalid!");
             }
-            return Ok();
+            return Ok(response);
         }
         [Authorization(Role.Admin)]
         [HttpGet("admin")]

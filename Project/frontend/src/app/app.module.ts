@@ -10,8 +10,7 @@ import { ContentComponent } from './pages/content/content.component';
 import { MainComponent } from './pages/main/main.component';
 import { InfoComponent } from './shared/components/info/info.component';
 import { ApartmentContentComponent } from './pages/apartment-content/apartment-content.component';
-import { RegisterComponent } from './register/register.component';
-
+import { LoginComponent } from './pages/login/login.component';
 //Modules
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
@@ -24,6 +23,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainComponent,
     InfoComponent,
     ApartmentContentComponent,
-    RegisterComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

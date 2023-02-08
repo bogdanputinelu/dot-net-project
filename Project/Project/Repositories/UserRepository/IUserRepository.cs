@@ -9,5 +9,6 @@ namespace Project.Repositories.UserRepository
         List<User> GetAllWithJoin();
 
         User FindByUsername(string username);
+        User FindByEmail(string email);
     }
 }
