@@ -1,6 +1,6 @@
 <mat-card>
-  <p (click)="navigateToApartment(apartment.id)" *ngFor="let apartment of apartmentsFromApi">
+  <button mat-stroked-button color="primary" (click)="navigateToApartment(apartment.id)" *ngFor="let apartment of apartmentsFromApi">
     Apartment Name: {{apartment.name}} <br />
     Price: {{apartment.price}} <br />
-  </p>
+  </button>
 </mat-card>

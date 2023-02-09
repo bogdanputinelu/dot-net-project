@@ -22,7 +22,7 @@ namespace Project.Helpers.Attributes
             {
                 context.Result = unauthorizedStatusObject;
             }
-
+            
             var user = (User)context.HttpContext.Items["User"];
             if (user == null || !_roles.Contains(user.Role))
             {

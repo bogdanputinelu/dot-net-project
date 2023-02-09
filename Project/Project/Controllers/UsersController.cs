@@ -56,7 +56,7 @@ namespace Project.Controllers
             return Ok();
         }
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate(UserRequestDTO user)
+        public IActionResult Authenticate(UserRequestDTO user)
         {
             var response = _userService.Authenticate(user);
             if (response == null)
@@ -72,11 +72,12 @@ namespace Project.Controllers
             var users = await _userService.GetAllUsers();
             return Ok(users);
         }
-        [Authorization(Role.User)]
+        [Authorization(Role.Admin)]
         [HttpGet("user")]
-        public IActionResult GetAllUser()
+        public async Task<IActionResult> GetAllUser()
         {
-            return Ok("User");
+            var users = await _userService.GetAllUsers();
+            return Ok(users);
         }
         [Authorization(Role.Admin, Role.User)]
         [HttpPut("edit/{id}")]

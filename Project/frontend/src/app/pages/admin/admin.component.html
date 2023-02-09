@@ -1,4 +1,10 @@
 <mat-card>
-  <p>Main Admin Component</p>
-  <router-outlet></router-outlet>
+  <p>List of all the users</p>
+  <p mat-stroked-button *ngFor="let user of usersFromApi">
+    <mat-divider></mat-divider>
+    Id: {{user.id}} <br />
+    First Name: {{user.firstName}} <br />
+    Last Name: {{user.lastName}} <br />
+
+  </p>
 </mat-card>

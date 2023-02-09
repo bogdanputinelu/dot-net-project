@@ -14,6 +14,7 @@
     <Folder Include="src\app\core\guards\" />
     <Folder Include="src\app\core\interceptors\" />
     <Folder Include="src\app\core\services\apartment\" />
+    <Folder Include="src\app\core\services\user\" />
     <Folder Include="src\environments\" />
   </ItemGroup>
 </Project>
