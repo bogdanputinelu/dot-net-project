@@ -1,5 +1,6 @@
 ﻿using Project.Helpers.JwtUtils;
 using Project.Models;
+using Project.Repositories;
 using Project.Repositories.ApartmentRepository;
 using Project.Repositories.UserRepository;
 
@@ -7,45 +8,45 @@ namespace Project.Services.ApartmentServices
 {
     public class ApartmentService : IApartmentService
     {
-        public IApartmentRepository _apartmentRepository;
-        public ApartmentService(IApartmentRepository apartmentRepository)
+        public IUnitOfWork _unitOfWork;
+        public ApartmentService(IUnitOfWork unitOfWork)
         {
-            _apartmentRepository = apartmentRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task Create(Apartment newApartment)
         {
-            await _apartmentRepository.CreateAsync(newApartment);
-            await _apartmentRepository.SaveAsync();
+            await _unitOfWork.ApartmentRepository.CreateAsync(newApartment);
+            await _unitOfWork.SaveAsync();
         }
 
         public void Delete(Apartment apartment)
         {
-            _apartmentRepository.Delete(apartment);
+            _unitOfWork.ApartmentRepository.Delete(apartment);
         }
 
         public async Task<List<Apartment>> GetAllApartments()
         {
-            return await _apartmentRepository.GetAllAsync();
+            return await _unitOfWork.ApartmentRepository.GetAllAsync();
         }
 
         public async Task<Apartment> GetByIdAsync(Guid id)
         {
-            return await _apartmentRepository.FindByIdAsync(id);
+            return await _unitOfWork.ApartmentRepository.FindByIdAsync(id);
         }
 
         public Apartment GetById(Guid id)
         {
-            return _apartmentRepository.FindById(id);
+            return _unitOfWork.ApartmentRepository.FindById(id);
         }
 
         public bool Save()
         {
-            return _apartmentRepository.Save();
+            return _unitOfWork.ApartmentRepository.Save();
         }
 
         public void Update(Apartment updatedApartment)
         {
-            _apartmentRepository.Update(updatedApartment);
+            _unitOfWork.ApartmentRepository.Update(updatedApartment);
         }
     }
 }

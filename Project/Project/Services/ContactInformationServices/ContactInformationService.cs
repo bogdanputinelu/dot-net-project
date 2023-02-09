@@ -1,4 +1,5 @@
 ﻿using Project.Models;
+using Project.Repositories;
 using Project.Repositories.ApartmentRepository;
 using Project.Repositories.ContactInformationRepository;
 
@@ -6,40 +7,40 @@ namespace Project.Services.ContactInformationServices
 {
     public class ContactInformationService : IContactInformationService
     {
-        public IContactInformationRepository _contactInformationRepository;
-        public ContactInformationService(IContactInformationRepository contactInformationRepository)
+        public IUnitOfWork _unitOfWork;
+        public ContactInformationService(IUnitOfWork unitOfWork)
         {
-            _contactInformationRepository = contactInformationRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task Create(ContactInformation newContactInformation)
         {
-            await _contactInformationRepository.CreateAsync(newContactInformation);
-            await _contactInformationRepository.SaveAsync();
+            await _unitOfWork.ContactInformationRepository.CreateAsync(newContactInformation);
+            await _unitOfWork.ContactInformationRepository.SaveAsync();
         }
 
         public void Delete(ContactInformation contactInformation)
         {
-            _contactInformationRepository.Delete(contactInformation);
+            _unitOfWork.ContactInformationRepository.Delete(contactInformation);
         }
 
         public ContactInformation GetById(Guid id)
         {
-            return _contactInformationRepository.FindById(id);
+            return _unitOfWork.ContactInformationRepository.FindById(id);
         }
 
         public async Task<List<ContactInformation>> GetAllContactInformation()
         {
-            return await _contactInformationRepository.GetAllAsync();
+            return await _unitOfWork.ContactInformationRepository.GetAllAsync();
         }
 
         public bool Save()
         {
-            return _contactInformationRepository.Save();
+            return _unitOfWork.ContactInformationRepository.Save();
         }
 
         public void Update(ContactInformation updatedContactInformation)
         {
-            _contactInformationRepository.Update(updatedContactInformation);
+            _unitOfWork.ContactInformationRepository.Update(updatedContactInformation);
         }
     }
 }

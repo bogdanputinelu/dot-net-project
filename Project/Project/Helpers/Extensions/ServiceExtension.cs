@@ -1,4 +1,5 @@
 ﻿using Project.Helpers.JwtUtils;
+using Project.Repositories;
 using Project.Repositories.ApartmentRepository;
 using Project.Repositories.ContactInformationRepository;
 using Project.Repositories.LeasedRepository;
@@ -32,6 +33,7 @@ namespace Project.Helpers.Extensions
             services.AddTransient<ILocationService, LocationService>();
             services.AddTransient<IContactInformationService, ContactInformationService>();
             services.AddTransient<ILeasedService,LeasedService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

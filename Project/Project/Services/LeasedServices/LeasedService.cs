@@ -1,4 +1,5 @@
 ﻿using Project.Models;
+using Project.Repositories;
 using Project.Repositories.ApartmentRepository;
 using Project.Repositories.LeasedRepository;
 
@@ -6,40 +7,40 @@ namespace Project.Services.LeasedServices
 {
     public class LeasedService : ILeasedService
     {
-        public ILeasedRepository _leasedRepository;
-        public LeasedService(ILeasedRepository leasedRepository)
+        public IUnitOfWork _unitOfWork;
+        public LeasedService(IUnitOfWork unitOfWork)
         {
-            _leasedRepository = leasedRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task Create(Leased newLeased)
         {
-            await _leasedRepository.CreateAsync(newLeased);
-            await _leasedRepository.SaveAsync();
+            await _unitOfWork.LeasedRepository.CreateAsync(newLeased);
+            await _unitOfWork.LeasedRepository.SaveAsync();
         }
 
         public void Delete(Leased leased)
         {
-            _leasedRepository.Delete(leased);
+            _unitOfWork.LeasedRepository.Delete(leased);
         }
 
         public async Task<List<Leased>> GetAllLeased()
         {
-            return await _leasedRepository.GetAllAsync();
+            return await _unitOfWork.LeasedRepository.GetAllAsync();
         }
 
         public Leased GetById(Guid id1, Guid id2)
         {
-            return _leasedRepository.FindById(id1,id2);
+            return _unitOfWork.LeasedRepository.FindById(id1,id2);
         }
 
         public bool Save()
         {
-            return _leasedRepository.Save();
+            return _unitOfWork.LeasedRepository.Save();
         }
 
         public void Update(Leased updatedLeased)
         {
-            _leasedRepository.Update(updatedLeased);
+            _unitOfWork.LeasedRepository.Update(updatedLeased);
         }
     }
 }

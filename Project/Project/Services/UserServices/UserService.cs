@@ -1,6 +1,7 @@
 ﻿using Project.Helpers.JwtUtils;
 using Project.Models;
 using Project.Models.DTOs;
+using Project.Repositories;
 using Project.Repositories.UserRepository;
 using BCryptNet = BCrypt.Net.BCrypt;
 
@@ -8,18 +9,18 @@ namespace Project.Services.UserServices
 {
     public class UserService : IUserService
     {
-        public IUserRepository _userRepository;
+        public IUnitOfWork _unitOfWork;
         public IJwtUtils _jwtUtils;
-        public UserService(IUserRepository userRepository, IJwtUtils jwtUtils)
+        public UserService(IUnitOfWork unitOfWork, IJwtUtils jwtUtils)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
             _jwtUtils = jwtUtils;
         }
 
         public UserResponseDTO Authenticate(UserRequestDTO model)
         {
             //var user = _userRepository.FindByUsername(model.UserName);
-            var user = _userRepository.FindByEmail(model.Email);
+            var user = _unitOfWork.UserRepository.FindByEmail(model.Email);
             if(user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
             {
                 return null;
@@ -31,29 +32,29 @@ namespace Project.Services.UserServices
 
         public User GetById(Guid id)
         {
-            return _userRepository.FindById(id);
+            return _unitOfWork.UserRepository.FindById(id);
         }
 
         public async Task Create(User newUser)
         {
-            await _userRepository.CreateAsync(newUser);
-            await _userRepository.SaveAsync();
+            await _unitOfWork.UserRepository.CreateAsync(newUser);
+            await _unitOfWork.UserRepository.SaveAsync();
         }
         public async Task<List<User>> GetAllUsers()
         {
-            return await _userRepository.GetAllAsync();
+            return await _unitOfWork.UserRepository.GetAllAsync();
         }
         public void Update(User updatedUser)
         {
-            _userRepository.Update(updatedUser);
+            _unitOfWork.UserRepository.Update(updatedUser);
         }
         public void Delete(User user)
         {
-            _userRepository.Delete(user);
+            _unitOfWork.UserRepository.Delete(user);
         }
         public bool Save()
         {
-            return _userRepository.Save();
+            return _unitOfWork.UserRepository.Save();
         }
     }
 }

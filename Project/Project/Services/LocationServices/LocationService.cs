@@ -1,45 +1,46 @@
 ﻿using Project.Models;
+using Project.Repositories;
 using Project.Repositories.LocationRepository;
 
 namespace Project.Services.LocationServices
 {
     public class LocationService : ILocationService
     {
-        public ILocationRepository _locationRepository;
-        public LocationService(ILocationRepository locationRepository)
+        public IUnitOfWork _unitOfWork;
+        public LocationService(IUnitOfWork unitOfWork)
         {
-            _locationRepository = locationRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task Create(Location newLocation)
         {
-            await _locationRepository.CreateAsync(newLocation);
-            await _locationRepository.SaveAsync();
+            await _unitOfWork.LocationRepository.CreateAsync(newLocation);
+            await _unitOfWork.LocationRepository.SaveAsync();
         }
 
         public void Delete(Location location)
         {
-            _locationRepository.Delete(location);
+            _unitOfWork.LocationRepository.Delete(location);
         }
 
         public async Task<List<Location>> GetAllLocations()
         {
-            return await _locationRepository.GetAllAsync();
+            return await _unitOfWork.LocationRepository.GetAllAsync();
         }
 
         public Location GetById(Guid id)
         {
-            return _locationRepository.FindById(id);
+            return _unitOfWork.LocationRepository.FindById(id);
         }
 
         public bool Save()
         {
-            return _locationRepository.Save();
+            return _unitOfWork.LocationRepository.Save();
         }
 
         public void Update(Location updatedLocation)
         {
-            _locationRepository.Update(updatedLocation);
+            _unitOfWork.LocationRepository.Update(updatedLocation);
         }
     }
 }
